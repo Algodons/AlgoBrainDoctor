@@ -467,6 +467,7 @@ score = (
 Primary entity representing a Git repository.
 
 ```sql
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
 CREATE TABLE repos (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   org_id UUID NOT NULL REFERENCES orgs(id),
