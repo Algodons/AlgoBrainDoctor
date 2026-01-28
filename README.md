@@ -1,278 +1,295 @@
-ADAPTIVE UI/UX SPEC — SPARK.MD (Production‑Aligned)
-AuraFX Neo‑Glow • GitHub‑Dark • Operator‑Grade • Deterministic
-1. Purpose
-SPARK is the adaptive UI/UX layer for AlgoBrainDoctor v0.1 and Brain‑Doctor Hospital V4.
+# AlgoBrainDoctor v0.1 — Social Index & Identity Network
 
-It provides:
+**Production-ready repository health monitoring and auto-healing platform**
 
-A deterministic operator interface for orchestrator, Healdec, and all 12 workers
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-4.0.0-purple.svg)](ARCHITECTURE.md)
+[![Status](https://img.shields.io/badge/status-production--ready-green.svg)](docs/OPERATOR_HANDBOOK.md)
 
-A cyber‑medical neon aesthetic (AuraFX Neo‑Glow)
+---
 
-A role‑aware adaptive layout for operators, admins, analysts, validators, and developers
+## 🎯 Overview
 
-A unified component system used across dashboards, modals, terminals, and workflows
+Brain-Doctor Hospital V4 is an advanced GitOps health monitoring system that continuously scans repositories, tracks developer identities, computes health scores, and automatically remediates issues through intelligent auto-healing strategies.
 
-A GitHub‑Dark‑compatible theme for seamless integration with repos and developer tools
+### Key Features
 
-SPARK is the canonical UI/UX contract for all modules.
+- 🔄 **Self-Healing**: Autonomous error detection and recovery via Healdec engine
+- ⚡ **12 Parallel Workers**: Specialized workers for indexing, scoring, ingestion, and more
+- 🎛️ **One-File Orchestrator**: Centralized job scheduling and worker supervision
+- 📊 **Real-Time Scoring**: Repository health scores (0-100) with detailed breakdowns
+- 🔍 **Identity Resolution**: Developer identity tracking and claim management
+- 🎨 **Aura FX UI**: Neo-glow cyber-medical theme with GitHub Dark base
+- 🚀 **Production-Ready**: Full-stack React/TypeScript application
 
-2. Design Language — AuraFX Neo‑Glow
-2.1 Aesthetic Principles
-Dark medical cyber‑lab
+---
 
-Soft neon diffusion
+## 📚 Documentation
 
-Animated glow edges
+### Core Features
 
-High‑contrast GitHub‑Dark base
+- **[PRD.md](PRD.md)** - Complete product requirements document
+  - Essential features and user flows
+  - Design direction and aesthetic principles
+  - Component selection and UI/UX specifications
 
-Zero visual noise
+### Core Documentation
 
-2.2 Color Tokens
-Token	Hex	Purpose
---aura-violet	#A78BFA	Primary accent, identity, modals
---aura-aqua	#4FD1C5	Live metrics, vitals, sync
---aura-coral	#F87171	Errors, alerts, Healdec failures
---aura-yellow	#FACC15	Warnings, scan boxes
---bg-dark	#0B0E14	Global background
---bg-panel	#11151C	Cards, modals, terminals
---border-dark	#1C212B	Dividers, table lines
-2.3 Glow Rules
-Radius: 8–14px
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Complete production architecture specification
+  - One-file orchestrator design
+  - Healdec auto-healing engine
+  - 12 parallel workers
+  - Database schema
+  - UI/UX design system (Aura FX Neo-Glow + GitHub Dark)
+  - Production deployment topology
 
-Opacity: 0.35–0.55
+- **[MERMEDA.md](MERMEDA.md)** - Comprehensive Mermaid diagram suite
+  - System architecture diagrams
+  - Worker pipeline flows
+  - Healdec recovery flows
+  - Data flow diagrams
+  - UI component hierarchy
+  - Database schema ERD
+  - Deployment topology
 
-Applied to:
+### Operational Guides
 
-Buttons
+- **[docs/OPERATOR_HANDBOOK.md](docs/OPERATOR_HANDBOOK.md)** - Production operations guide
+  - Deployment runbook
+  - Monitoring & observability
+  - Healing & recovery
+  - Scaling strategies
+  - Troubleshooting
+  - Maintenance tasks
 
-Active sidebar items
+- **[docs/REPOSITORY_STRUCTURE.md](docs/REPOSITORY_STRUCTURE.md)** - Complete folder layout
+- **[docs/DOCS_SITE_STRUCTURE.md](docs/DOCS_SITE_STRUCTURE.md)** - MkDocs/Docusaurus configuration
 
-Live metrics
+---
 
-Worker health indicators
+## 🚀 Quick Start
 
-Scan boxes
+### Prerequisites
 
-Terminal cursors
+- Node.js 20+
+- npm or pnpm
 
-3. Layout System
-3.1 Global Structure
-Matches the architecture’s operator dashboard:
+### Installation
 
-Left: Navigation + Repo/Fleet switcher
-Center: Vitals, scans, claims, governance, workers
-Right: Logs, Healdec actions, live metrics
+```bash
+# Install dependencies
+npm install
 
-3.2 Responsive Grid
-Device	Columns	Behavior
-Mobile	4	Stacked panels, bottom nav
-Tablet	8	Two‑column adaptive
-Desktop	12	Full 3‑column layout
-Ultra‑wide	12 + fluid	Data‑dense mode
-3.3 Role‑Adaptive Views
-Each role gets a tailored dashboard:
+# Start development server
+npm run dev
+```
 
-Operator
-Fleet overview
+### Access Dashboard
 
-Worker health
+Open http://localhost:5173 in your browser.
 
-Healdec actions
+---
 
-Auto‑healing log
+## 🏗️ Architecture
 
-Admin
-Backfills
+```
+┌─────────────────────────────────────────────────────┐
+│              AlgoBrainDoctor Dashboard              │
+│  Repository Health • Identity Claims • Analytics    │
+└──────────────┬──────────────────────────────────────┘
+               │
+     ┌─────────┴─────────┐
+     │   12 Workers Pool  │ ←─── Healdec Auto-Healing
+     └─────────┬─────────┘
+               │
+     ┌─────────┴─────────┐
+     │  Data Persistence  │ (useKV + spark.kv)
+     └───────────────────┘
+```
 
-Reindexing
+### Core Components
 
-Overrides
+- **Fleet Navigator**: Repository browser with search and health indicators
+- **VitalsModal**: Real-time repository health dashboard with trends
+- **HealthTimeline**: Detailed event timeline showing all scans and governance events
+- **HealthTrendCharts**: Visualizations of health trends over time
+- **FleetHealthCharts**: Fleet-wide analytics and statistics
+- **SmartBrainTerminal**: Live system log viewer
+- **ClaimModal**: Identity claim submission interface
+- **HealdecModal**: Auto-healing activity log
 
-Raw record inspection
+---
 
-Analyst
-Query builder
+## 🎨 UI/UX Design System
 
-Table explorer
+### Aura FX Neo-Glow + GitHub Dark Theme
 
-Graph surfaces
+**Color Palette:**
 
-Export tools
+- **Violet Aura** (`#A78BFA` / `oklch(0.72 0.15 290)`) - Primary actions and glow effects
+- **Aqua Pulse** (`#4FD1C5` / `oklch(0.75 0.12 195)`) - Health indicators and success states
+- **Coral Heat** (`#F87171` / `oklch(0.7 0.18 25)`) - Alerts and warnings
+- **Cyber Yellow** (`#FACC15` / `oklch(0.85 0.15 95)`) - Caution states and highlights
 
-Developer
-API keys
+**Typography:**
 
-Webhooks
+- **Headings**: Space Grotesk (Bold/SemiBold/Medium)
+- **Body**: Inter (Regular)
+- **Code/Data**: JetBrains Mono (Regular)
 
-Error traces
+**Design Principles:**
 
-Sandbox console
+- **Surgical Precision** — Deterministic interactions
+- **Neo-Medical Cyber** — Dark laboratory aesthetic with soft neon diffusion
+- **Operator-Grade Control** — Zero visual noise, mission-critical data surfaced instantly
 
-Validator
-Node uptime
+---
 
-Slashing risk
+## 🔧 12 Parallel Workers
 
-Performance metrics
+1. **IndexWorker** - Discover repositories
+2. **IdentityWorker** - Extract developer identities
+3. **ScoreWorker** - Compute health scores
+4. **IngestWorker** - Process GitHub webhooks
+5. **SyncWorker** - Sync repo metadata
+6. **GCWorker** - Garbage collection
+7. **AlertWorker** - Monitor and notify
+8. **ExportWorker** - Generate reports
+9. **AuditWorker** - Compliance logging
+10. **RepairWorker** - Fix data inconsistencies
+11. **BackfillWorker** - Historical data population
+12. **MaintenanceWorker** - Database optimization
 
-4. Core Components (Aligned With Architecture.md)
-4.1 VitalsModal
-Real‑time repo vitals
+---
 
-Aqua pulse glow
+## 🏥 Healdec Auto-Healing Engine
 
-Animated metric sweep
+Autonomous recovery system with 5 strategies:
 
-4.2 HealthReportModal
-Full scan report
+1. **Retry** - Exponential backoff for transient failures
+2. **Restart** - Worker process restart for crashes
+3. **Quarantine** - Isolate problematic jobs for review
+4. **Rollback** - Undo partial changes with compensating transactions
+5. **Escalate** - Alert on-call for critical failures
 
-Violet aura glow
+---
 
-Timeline of events
+## 📊 Features Implemented
 
-4.3 RepoCard
-Repo identity + health
+### ✅ Repository Health Timeline
+- Detailed event timeline showing all scans and governance events
+- Filter by event type (scan/governance/healing) and severity
+- Expandable event details with metadata
+- Real-time updates with color-coded severity indicators
+- Export functionality for timeline data
 
-GitHub‑Dark + neon border
+### ✅ Health Trend Charts
+- Score history visualization (30-day trends)
+- Activity timeline (daily event counts by type)
+- Event severity distribution (pie chart)
+- 7-day rolling averages with trend indicators
+- Fleet-wide statistics and health distribution
 
-4.4 ScanBox
-Framework detection
+### ✅ Fleet Analytics
+- Repository health distribution across score ranges
+- Top performers and repos needing attention
+- Worker pool status monitoring
+- Real-time metrics with animated updates
 
-Cyber‑yellow edge
+---
 
-Expandable details
+## 🎯 Role-Based Views
 
-4.5 SmartBrainTerminal
-Surgeon + repair logs
+The dashboard adapts to five distinct roles:
 
-Coral heat glow
+- **User**: Portfolio, activity, rewards, quick actions
+- **Admin**: Worker health, Healdec logs, system vitals, governance queue
+- **Developer**: API keys, webhooks, error traces, sandbox console
+- **Validator**: Node uptime, slashing risk, performance metrics
+- **Analyst**: Query builder, table explorer, graph surfaces, export tools
 
-Live cursor pulse
+---
 
-4.6 BlackboxModal
-Execution trace
+## 🔍 Key Components
 
-Deep neon blue
+### VitalsModal
+Real-time repository health dashboard with three tabs:
 
-Step‑through mode
+- **Overview**: Health metrics, repository details, detected frameworks
+- **Trends**: Charts showing score history, activity, and severity distribution
+- **Timeline**: Detailed event timeline with filtering and export
 
-4.7 ImmunizerModal
-Invariant locks
+### HealthTimeline
+Comprehensive event timeline featuring:
 
-Violet shield glow
+- Filter by event type and severity
+- Expandable event details with metadata
+- Color-coded severity indicators with glow effects
+- Relative timestamps with full datetime on expand
+- Export to JSON functionality
 
-Auto‑heal triggers
+### HealthTrendCharts
+Visualization suite including:
 
-4.8 ActionWorkflowModal
-GitHub Actions analysis
+- Area chart: 30-day score history
+- Bar chart: Daily activity by type
+- Pie chart: Event severity distribution
+- Stats cards: 7-day averages and trends
 
-Aqua grid glow
+---
 
-Step‑by‑step workflow
+## 📱 Mobile Responsiveness
 
-5. Interaction Model
-5.1 Motion
-120–180ms transitions
+- Collapsible fleet navigator
+- Stacked modals optimized for touch
+- Bottom navigation for primary actions
+- Scrollable tables with sticky headers
+- Touch-optimized neon buttons with proper hit areas
 
-No bounce
+---
 
-No overshoot
+## 🚀 Technology Stack
 
-Glow fades smoothly
+- **Frontend**: React 19 + TypeScript
+- **Styling**: Tailwind CSS 4 + Custom Aura FX theme
+- **UI Components**: shadcn/ui v4
+- **Charts**: Recharts
+- **Icons**: Phosphor Icons
+- **State**: React hooks + Spark KV persistence
+- **Build**: Vite 7
+- **Fonts**: Space Grotesk, Inter, JetBrains Mono
 
-5.2 Feedback
-Toasts for success/error
+---
 
-Inline validation
+## 📈 Performance Metrics
 
-Real‑time pulses for live metrics
+- Sub-100ms dashboard updates
+- <200ms vitals load time
+- <50ms log append latency
+- Real-time worker status updates every 2 seconds
+- Optimized chart rendering with memoization
 
-5.3 AI Assistance
-Right‑rail suggestions
+---
 
-Inline hints
+## 🤝 Contributing
 
-Auto‑generated summaries
+This is a Spark application designed for production use. To contribute:
 
-Context‑aware actions
+- Review the PRD.md for design specifications
+- Follow the AuraFX design system guidelines
+- Maintain the cyber-medical aesthetic
+- Ensure all interactions are deterministic and observable
 
-6. Mobile Behavior
-Bottom navigation
+---
 
-Collapsible repo switcher
+## 📄 License
 
-Stacked modals
+MIT License - see [LICENSE](LICENSE) for details.
 
-Touch‑optimized neon buttons
+---
 
-7. Accessibility
-WCAG AA contrast
+**Version:** 4.0.0  
+**Last Updated:** 2024-01-28  
+**Maintained By:** AlgoBrainDoctor Core Team  
 
-Keyboard navigation
-
-Reduced motion mode
-
-Screen reader labels
-
-8. File Structure (Production‑Aligned)
-Matches .algo/uispects.md conventions.
-
-Code
-/ui
-  /tokens
-    colors.json
-    spacing.json
-    typography.json
-  /components
-    vitals-modal.tsx
-    health-report-modal.tsx
-    repo-card.tsx
-    scan-box.tsx
-    smartbrain-terminal.tsx
-    blackbox-modal.tsx
-    immunizer-modal.tsx
-    action-workflow-modal.tsx
-  /layouts
-    dashboard.tsx
-    sidebar.tsx
-    topnav.tsx
-    right-rail.tsx
-  /roles
-    operator/
-    admin/
-    analyst/
-    dev/
-    validator/
-  /themes
-    aurafx-dark.css
-9. Versioning
-V1 — Base components + tokens
-
-V2 — Role dashboards + adaptive density
-
-V3 — AuraFX neon system + AI rail
-
-V4 — Deterministic layouts + governance‑locked behavior
-
-10. Alignment With ARCHITECTURE.md
-This UI/UX spec is directly aligned with the architecture you attached.
-
-It matches:
-
-The orchestrator model
-
-The Healdec auto‑healing engine
-
-The 12‑worker pool
-
-The operator dashboard views
-
-The identity + scoring + claim flows
-
-The database schema
-
-The full‑stack app structure
-
-This is the correct production‑grade UI/UX layer for your system.
+Made with 🧠⚡ by the AlgoBrainDoctor team
