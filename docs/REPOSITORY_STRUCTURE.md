@@ -195,9 +195,9 @@ AlgoBrainDoctor/
 │           ├── github.ts             # GitHub API config
 │           └── workers.ts            # Worker config
 │
+├── ARCHITECTURE.md               # Full architecture spec
+├── MERMEDA.md                    # Mermaid diagram suite
 ├── docs/
-│   ├── ARCHITECTURE.md               # Full architecture spec
-│   ├── MERMEDA.md                    # Mermaid diagram suite
 │   ├── REPOSITORY_STRUCTURE.md       # This file
 │   ├── DOCS_SITE_STRUCTURE.md        # Documentation site layout
 │   ├── OPERATOR_HANDBOOK.md          # Operations guide
