@@ -1,7 +1,7 @@
 # Brain-Doctor Hospital V4 — Architecture Specification
 
 > **Version:** 4.0  
-> **Status:** Production-Ready  
+> **Status:** In Progress  
 > **Last Updated:** 2026-01-28
 
 ---
