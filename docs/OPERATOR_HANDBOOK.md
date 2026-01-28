@@ -118,25 +118,38 @@ S3_EXPORTS_BUCKET=algobrain-exports
 #### Step 3: Store Secrets in AWS Secrets Manager
 
 ```bash
+# NOTE:
+# Avoid passing secret values directly as CLI arguments (they can end up in shell
+# history and process listings). Use file-based input instead, as shown below.
+
 # GitHub Token
+# Create a temporary file containing the token (do NOT commit this file).
+echo -n "ghp_xxxxxxxxxxxx" > /tmp/github-token.txt
 aws secretsmanager create-secret \
   --name algobrain/prod/github-token \
-  --secret-string "ghp_xxxxxxxxxxxx"
+  --secret-string file:///tmp/github-token.txt
+rm -f /tmp/github-token.txt
 
 # JWT Secret
+openssl rand -base64 64 > /tmp/jwt-secret.txt
 aws secretsmanager create-secret \
   --name algobrain/prod/jwt-secret \
-  --secret-string "$(openssl rand -base64 64)"
+  --secret-string file:///tmp/jwt-secret.txt
+rm -f /tmp/jwt-secret.txt
 
 # Webhook Secret
+openssl rand -hex 32 > /tmp/webhook-secret.txt
 aws secretsmanager create-secret \
   --name algobrain/prod/webhook-secret \
-  --secret-string "$(openssl rand -hex 32)"
+  --secret-string file:///tmp/webhook-secret.txt
+rm -f /tmp/webhook-secret.txt
 
 # Database Password
+openssl rand -base64 32 > /tmp/db-password.txt
 aws secretsmanager create-secret \
   --name algobrain/prod/db-password \
-  --secret-string "$(openssl rand -base64 32)"
+  --secret-string file:///tmp/db-password.txt
+rm -f /tmp/db-password.txt
 
 # Redis Password
 aws secretsmanager create-secret \
