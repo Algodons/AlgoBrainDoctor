@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import OperatorDashboard from './pages/OperatorDashboard';
 import './styles/index.css';
@@ -14,11 +14,16 @@ export default function App() {
     window.history.pushState({}, '', page === 'home' ? '/' : `/${page}`);
   };
 
-  window.addEventListener('popstate', () => {
-    const path = window.location.pathname;
-    if (path === '/operator') setCurrentPage('operator');
-    else setCurrentPage('home');
-  });
+  useEffect(() => {
+    const handlePopState = () => {
+      const path = window.location.pathname;
+      if (path === '/operator') setCurrentPage('operator');
+      else setCurrentPage('home');
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   return (
     <div className="app" onClick={(e) => {
