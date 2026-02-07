@@ -1,0 +1,7 @@
+packages:
+  - 'src/shared'
+  - 'src/workers'
+  - 'src/healdec'
+  - 'src/orchestrator'
+  - 'src/ui'
+  - 'src/api'
