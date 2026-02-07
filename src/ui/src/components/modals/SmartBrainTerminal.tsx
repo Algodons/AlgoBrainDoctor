@@ -7,25 +7,29 @@ interface SmartBrainTerminalProps {
 }
 
 export default function SmartBrainTerminal({ logs = [], maxLines = 100 }: SmartBrainTerminalProps) {
-  const [terminalLogs, setTerminalLogs] = useState<LogEntry[]>(logs);
-
-  useEffect(() => {
+  const [terminalLogs, setTerminalLogs] = useState<LogEntry[]>(() => {
+    const now = new Date().toISOString();
     const mockLogs: LogEntry[] = [
-      { timestamp: new Date().toISOString(), level: 'info', message: '🧠 AlgoBrainDoctor System Online', worker: 'orchestrator' },
-      { timestamp: new Date().toISOString(), level: 'success', message: '✓ Database connection established', worker: 'orchestrator' },
-      { timestamp: new Date().toISOString(), level: 'info', message: '⚙️  Starting 12 parallel workers...', worker: 'orchestrator' },
-      { timestamp: new Date().toISOString(), level: 'success', message: '✓ Clone Worker ready', worker: 'clone-worker' },
-      { timestamp: new Date().toISOString(), level: 'success', message: '✓ Commit Worker ready', worker: 'commit-worker' },
-      { timestamp: new Date().toISOString(), level: 'success', message: '✓ Identity Worker ready', worker: 'identity-worker' },
-      { timestamp: new Date().toISOString(), level: 'info', message: '📊 Processing job queue...', worker: 'orchestrator' },
-      { timestamp: new Date().toISOString(), level: 'success', message: '✓ Cloned repository: user/repo', worker: 'clone-worker' },
-      { timestamp: new Date().toISOString(), level: 'warning', message: '⚠️  High memory usage detected: 78%', worker: 'monitor' },
-      { timestamp: new Date().toISOString(), level: 'info', message: '🔍 Scanning commits...', worker: 'commit-worker' },
+      { timestamp: now, level: 'info', message: '🧠 AlgoBrainDoctor System Online', worker: 'orchestrator' },
+      { timestamp: now, level: 'success', message: '✓ Database connection established', worker: 'orchestrator' },
+      { timestamp: now, level: 'info', message: '⚙️  Starting 12 parallel workers...', worker: 'orchestrator' },
+      { timestamp: now, level: 'success', message: '✓ Clone Worker ready', worker: 'clone-worker' },
+      { timestamp: now, level: 'success', message: '✓ Commit Worker ready', worker: 'commit-worker' },
+      { timestamp: now, level: 'success', message: '✓ Identity Worker ready', worker: 'identity-worker' },
+      { timestamp: now, level: 'info', message: '📊 Processing job queue...', worker: 'orchestrator' },
+      { timestamp: now, level: 'success', message: '✓ Cloned repository: user/repo', worker: 'clone-worker' },
+      { timestamp: now, level: 'warning', message: '⚠️  High memory usage detected: 78%', worker: 'monitor' },
+      { timestamp: now, level: 'info', message: '🔍 Scanning commits...', worker: 'commit-worker' },
       ...logs
     ];
-    
-    setTerminalLogs(mockLogs.slice(-maxLines));
-  }, [logs, maxLines]);
+    return mockLogs.slice(-maxLines);
+  });
+
+  useEffect(() => {
+    if (logs.length > 0) {
+      setTerminalLogs(prev => [...prev, ...logs].slice(-maxLines));
+    }
+  }, [logs]);
 
   const formatTimestamp = (ts: string) => {
     const date = new Date(ts);

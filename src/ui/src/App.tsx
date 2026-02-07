@@ -7,7 +7,11 @@ import './styles/components.css';
 type Page = 'home' | 'operator';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('home');
+  const [currentPage, setCurrentPage] = useState<Page>(() => {
+    const path = window.location.pathname;
+    if (path === '/operator') return 'operator';
+    return 'home';
+  });
 
   const handleNavigation = (page: Page) => {
     setCurrentPage(page);
