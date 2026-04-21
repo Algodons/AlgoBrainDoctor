@@ -8,7 +8,14 @@ import {
   Logger,
   HealdecError
 } from '@algobrain/shared';
-import { IHealingStrategy, RetryStrategy, RestartStrategy } from './strategies/index.js';
+import {
+  IHealingStrategy,
+  RetryStrategy,
+  RestartStrategy,
+  QuarantineStrategy,
+  RollbackStrategy,
+  EscalateStrategy,
+} from './strategies/index.js';
 
 /**
  * Healdec Auto-Healing Engine
@@ -25,6 +32,9 @@ export class HealdecEngine {
     // Register default strategies
     this.registerStrategy(new RetryStrategy());
     this.registerStrategy(new RestartStrategy());
+    this.registerStrategy(new QuarantineStrategy());
+    this.registerStrategy(new RollbackStrategy());
+    this.registerStrategy(new EscalateStrategy());
   }
 
   /**
