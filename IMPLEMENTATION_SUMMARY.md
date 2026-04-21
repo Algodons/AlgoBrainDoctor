@@ -310,7 +310,7 @@ AlgoBrainDoctor/
 ## Next Steps
 
 ### High Priority
-1. Implement remaining 9 workers:
+1. Harden newly scaffolded workers for production workloads:
    - IngestWorker (webhooks)
    - SyncWorker (metadata sync)
    - GCWorker (garbage collection)
@@ -321,7 +321,7 @@ AlgoBrainDoctor/
    - BackfillWorker (historical data)
    - MaintenanceWorker (DB optimization)
 
-2. Create additional Healdec strategies:
+2. Finalize newly scaffolded Healdec strategies:
    - Quarantine (isolate bad jobs)
    - Rollback (compensating transactions)
    - Escalate (alert on-call)
